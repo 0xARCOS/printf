@@ -27,7 +27,7 @@ void	ft_putnbr_unsigned(unsigned int n, int *i)
 
 void	ft_putstr(const char *str, int *i)
 {
-	if (!str)
+	if (!str || str == NULL)
 	{
 		write(1, "(null)", 6);
 		return (0);
