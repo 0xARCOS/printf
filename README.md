@@ -5,7 +5,7 @@
         <img alt='42 (oscuro)' src='https://img.shields.io/badge/Madrid-black?style=flat&logo=42&logoColor=white'/>
     </a>
     <img src="https://img.shields.io/badge/puntuación---%20%2F%20100-success?color=%2312bab9&style=flat" />
-    <img src="https://api.visitorbadge.io/api/visitors?user=V1nt3r4&repo=Get_Next_Line&label=visitas&countColor=%2385e3ff&style=flat&labelStyle=none"/>
+    <img src="https://api.visitorbadge.io/api/visitors?user=V1nt3r4&repo=42_cursus_printf&label=visitas&countColor=%2385e3ff&style=flat&labelStyle=none"/>
 </div>
 
 ---
