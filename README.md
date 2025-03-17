@@ -9,7 +9,6 @@
 </div>
 
 ---
-# ft_printf
 
 Este es un proyecto de la escuela 42 que consiste en recrear la función `printf` de la biblioteca estándar de C.
 
