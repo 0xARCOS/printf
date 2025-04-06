@@ -1,66 +1,102 @@
 <div align="center">
-    <img src="https://github.com/15Galan/42_project-readmes/blob/master/banners/cursus/projects/ft_printf-light.png#gh-light-mode-only" alt="Banner (claro)" />
-    <img src="https://github.com/15Galan/42_project-readmes/blob/master/banners/cursus/projects/ft_printf-dark.png#gh-dark-mode-only" alt="Banner (oscuro)" />
+    <img src="https://github.com/15Galan/42_project-readmes/blob/master/banners/cursus/projects/ft_printf-light.png#gh-light-mode-only" alt="Banner claro" />
+    <img src="https://github.com/15Galan/42_project-readmes/blob/master/banners/cursus/projects/ft_printf-dark.png#gh-dark-mode-only" alt="Banner oscuro" />
     <a href='https://profile.intra.42.fr/users/aarcos' target="_blank">
-        <img alt='42 (oscuro)' src='https://img.shields.io/badge/Madrid-black?style=flat&logo=42&logoColor=white'/>
+        <img alt='42 Madrid' src='https://img.shields.io/badge/Madrid-black?style=flat&logo=42&logoColor=white'/>
     </a>
-    <img src="https://img.shields.io/badge/puntuación---%20%2F%20100-success?color=%2312bab9&style=flat" />
-    <img src="https://api.visitorbadge.io/api/visitors?user=V1nt3r4&repo=42_cursus_printf&label=visitas&countColor=%2385e3ff&style=flat&labelStyle=none"/>
+    <img src="https://img.shields.io/badge/puntuación-💯%2F100-success?color=%2312bab9&style=flat" />
+    <img src="https://api.visitorbadge.io/api/visitors?user=0xARCOS&repo=ft_printf&label=visitas&countColor=%2385e3ff&style=flat&labelStyle=none"/>
 </div>
 
 ---
 
-Este es un proyecto de la escuela 42 que consiste en recrear la función `printf` de la biblioteca estándar de C.
+# ft_printf
 
-## Descripción
+> Reimplementación personalizada de `printf`, una de las funciones más utilizadas del lenguaje C. Este proyecto del currículo de la 42 School pone a prueba tu conocimiento sobre parsing, tipos de datos, memoria y recursividad.
 
-El objetivo de este proyecto es implementar una versión propia de `printf`, manejando diferentes tipos de formatos y argumentos de manera eficiente y siguiendo las normas de codificación de 42School.
+---
 
-## ¿Cómo funciona?
+## 📦 Descripción
 
-El proyecto `ft_printf` procesa una cadena de formato y reemplaza los marcadores de posición con los valores correspondientes. Internamente, divide la cadena en fragmentos, analiza los especificadores de formato y maneja la conversión y salida de los datos utilizando `write`. 
+Este proyecto recrea la función estándar `printf` de C, permitiendo imprimir texto con formato desde cero, utilizando únicamente funciones permitidas (`write`, etc.). Se analizan los especificadores de formato y se procesan los argumentos con punteros y listas variables (`va_list`).
 
-Cada especificador es detectado y tratado de manera específica, asegurando la correcta impresión del valor pasado como argumento. Se utilizan buffers para mejorar la eficiencia en la escritura y minimizar las llamadas al sistema.
+---
 
-## Funcionalidades
+## 📁 Estructura del Proyecto
 
-- Soporte para los siguientes especificadores de formato:
-  - `%c` → Caracter
-  - `%s` → Cadena de caracteres
-  - `%p` → Puntero en hexadecimal
-  - `%d` / `%i` → Entero decimal con signo
-  - `%u` → Entero decimal sin signo
-  - `%x` / `%X` → Número hexadecimal en minúsculas/mayúsculas
-  - `%%` → Imprime el símbolo `%`
+```
+ft_printf/
+├── ft_printf.h       # Header con prototipos y macros
+├── ft_printf.c       # Lógica principal de parsing
+├── ft_utils.c        # Funciones auxiliares (itoa, strlen, etc.)
+├── ft_print_types.c  # Impresión según tipo (char, str, int, hex, ptr)
+```
 
-## Instalación y Uso
+---
 
-Para compilar y probar el proyecto, usa el siguiente comando en tu terminal:
+## ⚙️ Compilación
 
-```sh
+```bash
 make
 ```
 
-Luego, puedes incluir la librería en tu código de la siguiente manera:
+También puedes compilar directamente con:
+
+```bash
+cc -Wall -Wextra -Werror *.c -o ft_printf
+```
+
+---
+
+## 🧠 Uso Básico
 
 ```c
-#include "ft_printf.h"
-
-int main() {
-    ft_printf("Hola, %s!\n", "mundo");
-    return 0;
-}
+ft_printf("Hola %s! Tu nota es %d/100.\n", "Ariel", 100);
 ```
 
-Compila el código con:
-
-```sh
-gcc main.c libftprintf.a -o test
-./test
+🔸 Salida esperada:
+```
+Hola Ariel! Tu nota es 100/100.
 ```
 
-## Normas de Codificación
+---
 
-- Código desarrollado siguiendo la norma de 42School.
-- No se permite el uso de funciones externas salvo `write`.
-- Se deben manejar errores adecuadamente.
+## 📑 Especificadores Soportados
+
+| Formato | Descripción           |
+|---------|------------------------|
+| `%c`    | Carácter               |
+| `%s`    | String (cadena)        |
+| `%d`    | Entero decimal (signed)|
+| `%i`    | Entero decimal (signed)|
+| `%u`    | Unsigned decimal       |
+| `%x`    | Hexadecimal (minúsculas) |
+| `%X`    | Hexadecimal (MAYÚSCULAS) |
+| `%p`    | Puntero (dirección)    |
+| `%%`    | Imprime el carácter %  |
+
+---
+
+## 💡 Detalles Técnicos
+
+- Usa `va_list` para manejar argumentos variables
+- Cada especificador es analizado y resuelto por funciones independientes
+- Conversión numérica sin usar funciones estándar (ej. `itoa`)
+- Sin uso de `malloc` salvo en representaciones string
+
+---
+
+## 🧑‍💻 Autor
+
+**Ariel (0xARCOS)**  
+📍 Campus 42 Madrid  
+🔗 [GitHub](https://github.com/0xARCOS)
+
+---
+
+## 📜 Licencia
+
+Este proyecto es parte del aprendizaje en 42 y puede reutilizarse con fines académicos o personales.  
+¡Estás invitado a clonar, estudiar o contribuir! ⭐
+
+---
