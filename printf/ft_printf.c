@@ -2,6 +2,9 @@
 #include <stdarg.h>
 #include <unistd.h>
 
+/* El código ahora es seguro, cada caracter consumido de la cadena format fuerza el avance explícito de p en la rama de código 
+		 correspondiente, lo que evita un bucle infinito */
+
 int ft_printf(char const *format, ...)
 {
 	va_list		args;
