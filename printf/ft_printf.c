@@ -4,24 +4,23 @@
 
 int ft_printf(char const *format, ...)
 {
-	va_list args;
-	int caracteres_impresos;
-	
+	va_list		args;
+	int			caracteres_impresos;
+	const char	*p;
+	char		c_val;
+
 	caracteres_impresos = 0;
-	va_start(args, format); // <- Inicializa la lista, apuntando al argumento 'format';
-	const char *p;
 	p = format;
+	va_start(args, format); // <- Inicializa la lista, apuntando al argumento 'format';
 
 	while (*p)
 	{
 		if (*p == '%')
 		{
-			// Caso 1: Es el inicio de una conversión!
-			// incrementa 'p' para pasar al siguiente caracter (la especificación).
-			p++;
+			p++; // Apunta al especificador (c, s, %, etc).
 			if (*p == 'c')
 			{
-				char caracter_a_imprimir = (char)va_arg(args, int);
+				c_val = (char)va_arg(args, int);
 				write(1, &caracter_a_imprimir, 1);
 				caracteres_impresos++;
 				p++;
@@ -29,7 +28,7 @@ int ft_printf(char const *format, ...)
 			else if (*p == 's') // <-- string 
 			{
 				// Casos tocapelotas: si el puntero es NULL, hay que imprimir "(null)".
-				char caracter_a_imprimir = (char *)va_arg(args, char *);
+				caracter_a_imprimir = (char *)va_arg(args, char *);
 				write(1, &caracter_a_imprimir, 1);
 				caracteres_impresos++;
 				p++;
@@ -70,6 +69,15 @@ int ft_printf(char const *format, ...)
 				caracteres_impresos++;
 				p++;
 			}
+			else if (*p == '%')
+			{
+				c_val = '%'
+				write(1, &c_val, 1);
+				caracteres_impresos++;
+				p++;
+			}
+			else
+				p++; // <-- Si no es ninguna de las anteriores lo ignoramos pero movemos el puntero.
 		}
 		else
 		{
